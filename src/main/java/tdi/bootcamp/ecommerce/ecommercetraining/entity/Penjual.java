@@ -28,4 +28,5 @@ public class Penjual {
     @Column(name = "deposit")
     private BigDecimal deposit;
 
+
 }

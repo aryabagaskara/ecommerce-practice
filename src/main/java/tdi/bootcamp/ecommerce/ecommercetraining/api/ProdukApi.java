@@ -34,4 +34,9 @@ public class ProdukApi {
         return ResponseEntity.ok().build();
     }
 
+    @GetMapping("/penjual/{id}")
+    public Page<Produk> findByPenjual(@PathVariable("id")String id, Pageable pageable){
+        return (Page<Produk>) service.findByPenjual_PenjualId(id, pageable);
+    }
+
 }

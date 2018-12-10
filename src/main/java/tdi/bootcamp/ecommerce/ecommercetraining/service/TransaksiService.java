@@ -44,7 +44,10 @@ public class TransaksiService {
             Optional<Pembeli> pembeliOptional = pembeliRepository.findById(transaksi.getPembeli().getId());
             if (pembeliOptional.isPresent()){
                 Pembeli pembeli1 = pembeliOptional.get();
-                transaksi.getPembeli().setSaldo(pembeli1.getSaldo().subtract(biaya));
+                BigDecimal saldo = pembeli1.getSaldo();
+                saldo = saldo.subtract(biaya);
+                pembeli1.setSaldo(saldo);
+                transaksi.setPembeli(pembeli1);
             }
             Optional<Penjual> penjualOptional = penjualRepository.findById(produk1.getPenjual().getId());
             if (penjualOptional.isPresent()) {
@@ -66,5 +69,7 @@ public class TransaksiService {
     public Page<Transaksi> findAll(Pageable page){
         return repository.findAll(page);
     }
+
+
 }
 

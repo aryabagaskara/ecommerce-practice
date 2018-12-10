@@ -18,6 +18,7 @@ public class PenjualService {
     @Autowired
     private PenjualRepository repository;
 
+
     @Transactional
     public Penjual save(Penjual penjual) {
         return repository.save(penjual);

@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 import tdi.bootcamp.ecommerce.ecommercetraining.entity.Produk;
 import tdi.bootcamp.ecommerce.ecommercetraining.repository.ProdukRepository;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -35,4 +36,10 @@ public class ProdukService {
     public Page<Produk> paginate(Pageable page){
         return repository.findAll(page);
     }
+
+    public Page<Produk> findByPenjual_PenjualId(String id, Pageable pageable){
+        return (Page<Produk>) repository.findByPenjual_Id(id, pageable);
+    }
+
+
 }

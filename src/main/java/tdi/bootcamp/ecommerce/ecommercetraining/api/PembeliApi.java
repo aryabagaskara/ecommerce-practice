@@ -9,6 +9,9 @@ import org.springframework.web.bind.annotation.*;
 import tdi.bootcamp.ecommerce.ecommercetraining.entity.Pembeli;
 import tdi.bootcamp.ecommerce.ecommercetraining.service.PembeliService;
 
+import java.math.BigDecimal;
+import java.util.Optional;
+
 @RestController
 @RequestMapping("/api/pembeli")
 public class PembeliApi {
@@ -32,4 +35,21 @@ public class PembeliApi {
         service.delete(id);
         return ResponseEntity.ok().build();
     }
+
+    @PostMapping("/addsaldo")
+    public ResponseEntity<Pembeli> addsaldo(@RequestParam("pembeliId")String id,
+                                            @RequestParam("pembeliSaldo") BigDecimal saldo){
+        Optional<Pembeli> pembeliOptional = service.findById(id);
+        if (!pembeliOptional.isPresent()) return ResponseEntity.noContent().build();
+        else {
+            Pembeli pembeli1 = pembeliOptional.get();
+            BigDecimal saldo1 = new BigDecimal(String.valueOf(pembeli1.getSaldo()));
+            saldo1 = saldo1.add(saldo);
+            pembeli1.setSaldo(saldo1);
+            service.save(pembeli1);
+            return ResponseEntity.ok(pembeli1);
+        }
+    }
+
+
 }

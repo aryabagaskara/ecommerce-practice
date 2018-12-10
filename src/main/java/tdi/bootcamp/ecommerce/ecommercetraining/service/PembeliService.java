@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 import tdi.bootcamp.ecommerce.ecommercetraining.entity.Pembeli;
 import tdi.bootcamp.ecommerce.ecommercetraining.repository.PembeliRepository;
 
+import java.math.BigDecimal;
 import java.util.Optional;
 
 @Service
@@ -35,5 +36,7 @@ public class PembeliService {
     public Page<Pembeli> paginate(Pageable page){
         return repository.findAll(page);
     }
+
+
 
 }
