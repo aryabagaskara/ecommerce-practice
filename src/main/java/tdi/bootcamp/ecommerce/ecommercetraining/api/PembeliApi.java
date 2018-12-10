@@ -20,25 +20,25 @@ public class PembeliApi {
     private PembeliService service;
 
     @PostMapping("/save")
-    public ResponseEntity<Pembeli> save(@RequestBody Pembeli pembeli){
+    public ResponseEntity<Pembeli> save(@RequestBody Pembeli pembeli) {
         pembeli = service.save(pembeli);
         return ResponseEntity.ok(pembeli);
     }
 
     @GetMapping("/list")
-    public Page<Pembeli> pagination(Pageable page){
+    public Page<Pembeli> pagination(Pageable page) {
         return service.paginate(page);
     }
 
     @DeleteMapping("/delete")
-    public ResponseEntity<?> delete(@RequestParam("pembeliId") String id){
+    public ResponseEntity<?> delete(@RequestParam("pembeliId") String id) {
         service.delete(id);
         return ResponseEntity.ok().build();
     }
 
     @PostMapping("/addsaldo")
-    public ResponseEntity<Pembeli> addsaldo(@RequestParam("pembeliId")String id,
-                                            @RequestParam("pembeliSaldo") BigDecimal saldo){
+    public ResponseEntity<Pembeli> addsaldo(@RequestParam("pembeliId") String id,
+                                            @RequestParam("pembeliSaldo") BigDecimal saldo) {
         Optional<Pembeli> pembeliOptional = service.findById(id);
         if (!pembeliOptional.isPresent()) return ResponseEntity.noContent().build();
         else {

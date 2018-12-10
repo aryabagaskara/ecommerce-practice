@@ -8,9 +8,6 @@ import org.springframework.web.bind.annotation.*;
 import tdi.bootcamp.ecommerce.ecommercetraining.entity.Transaksi;
 import tdi.bootcamp.ecommerce.ecommercetraining.service.TransaksiService;
 
-import java.math.BigDecimal;
-import java.util.Optional;
-
 
 @RestController
 @RequestMapping("/api/transaksi")
@@ -21,7 +18,7 @@ public class TransaksiApi {
 
     @PostMapping("/pembelian")
     public ResponseEntity<?> transaksiPembelian(@RequestBody Transaksi transaksi) {
-            transaksi = transaksiService.pembelian(transaksi);
+        transaksi = transaksiService.pembelian(transaksi);
 //
 //        Optional<Produk> produkOptional = produkService.findById(transaksi.getProduk().getId());
 //        if (!produkOptional.isPresent()) return ResponseEntity.noContent().build();

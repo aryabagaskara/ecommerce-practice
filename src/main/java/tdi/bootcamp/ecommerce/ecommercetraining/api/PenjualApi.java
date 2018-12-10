@@ -17,19 +17,19 @@ public class PenjualApi {
     private PenjualService service;
 
     @PostMapping("/save")
-    public ResponseEntity<Penjual> save(@RequestBody  Penjual penjual){
+    public ResponseEntity<Penjual> save(@RequestBody Penjual penjual) {
         penjual = service.save(penjual);
         return ResponseEntity.ok(penjual);
     }
 
 
     @GetMapping("/list")
-    public Page<Penjual> pagination(Pageable page){
+    public Page<Penjual> pagination(Pageable page) {
         return service.paginate(page);
     }
 
     @DeleteMapping("/delete")
-    public ResponseEntity<?> delete(@RequestParam("penjualId") String id){
+    public ResponseEntity<?> delete(@RequestParam("penjualId") String id) {
         service.delete(id);
         return ResponseEntity.ok().build();
     }

@@ -17,25 +17,25 @@ public class ProdukApi {
     public ProdukService service;
 
     @PostMapping("/save")
-    public ResponseEntity<Produk> save(@RequestBody  Produk produk){
+    public ResponseEntity<Produk> save(@RequestBody Produk produk) {
         produk = service.save(produk);
         return ResponseEntity.ok(produk);
     }
 
 
     @GetMapping("/list")
-    public Page<Produk> pagination(Pageable page){
+    public Page<Produk> pagination(Pageable page) {
         return service.paginate(page);
     }
 
     @DeleteMapping("/delete")
-    public ResponseEntity<?> delete(@RequestParam("produkId") String id){
+    public ResponseEntity<?> delete(@RequestParam("produkId") String id) {
         service.delete(id);
         return ResponseEntity.ok().build();
     }
 
     @GetMapping("/penjual/{id}")
-    public Page<Produk> findByPenjual(@PathVariable("id")String id, Pageable pageable){
+    public Page<Produk> findByPenjual(@PathVariable("id") String id, Pageable pageable) {
         return (Page<Produk>) service.findByPenjual_PenjualId(id, pageable);
     }
 

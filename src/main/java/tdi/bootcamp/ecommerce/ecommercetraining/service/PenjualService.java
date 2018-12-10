@@ -25,15 +25,15 @@ public class PenjualService {
     }
 
     @Transactional
-    public void delete(String id){
+    public void delete(String id) {
         repository.deleteById(id);
     }
 
-    public Optional<Penjual> findById(String id){
+    public Optional<Penjual> findById(String id) {
         return repository.findById(id);
     }
 
-    public Page<Penjual> paginate(Pageable page){
+    public Page<Penjual> paginate(Pageable page) {
         return repository.findAll(page);
     }
 

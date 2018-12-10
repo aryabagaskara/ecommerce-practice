@@ -6,7 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class EcommerceTrainingApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(EcommerceTrainingApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(EcommerceTrainingApplication.class, args);
+    }
 }

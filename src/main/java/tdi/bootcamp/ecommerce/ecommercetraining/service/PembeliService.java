@@ -9,7 +9,6 @@ import org.springframework.transaction.annotation.Transactional;
 import tdi.bootcamp.ecommerce.ecommercetraining.entity.Pembeli;
 import tdi.bootcamp.ecommerce.ecommercetraining.repository.PembeliRepository;
 
-import java.math.BigDecimal;
 import java.util.Optional;
 
 @Service
@@ -20,23 +19,22 @@ public class PembeliService {
     private PembeliRepository repository;
 
     @Transactional
-    public Pembeli save(Pembeli pembeli){
+    public Pembeli save(Pembeli pembeli) {
         return repository.save(pembeli);
     }
 
     @Transactional
-    public void delete(String id){
+    public void delete(String id) {
         repository.deleteById(id);
     }
 
-    public Optional<Pembeli> findById(String id){
+    public Optional<Pembeli> findById(String id) {
         return repository.findById(id);
     }
 
-    public Page<Pembeli> paginate(Pageable page){
+    public Page<Pembeli> paginate(Pageable page) {
         return repository.findAll(page);
     }
-
 
 
 }

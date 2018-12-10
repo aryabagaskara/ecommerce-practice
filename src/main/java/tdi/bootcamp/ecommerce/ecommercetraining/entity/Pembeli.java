@@ -16,7 +16,7 @@ import java.math.BigDecimal;
 @Table(name = "pembeli")
 public class Pembeli {
     @Id
-    @GenericGenerator(name = "uuid_gen",strategy = "uuid2")
+    @GenericGenerator(name = "uuid_gen", strategy = "uuid2")
     @GeneratedValue(generator = "uuid_gen")
     @Column(name = "id")
     private String id;

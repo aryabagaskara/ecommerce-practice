@@ -33,7 +33,7 @@ public class TransaksiService {
     private PembeliRepository pembeliRepository;
 
     @Transactional
-    public Transaksi pembelian(Transaksi transaksi){
+    public Transaksi pembelian(Transaksi transaksi) {
         transaksi.setTanggalTransaksi(Date.valueOf(LocalDate.now()));
         //set biaya
         Optional<Produk> produkOptional = produkRepository.findById(transaksi.getProduk().getId());
@@ -42,7 +42,7 @@ public class TransaksiService {
             BigDecimal biaya = produk1.getHarga().multiply(BigDecimal.valueOf(transaksi.getQty()));
             transaksi.setBiaya(biaya);
             Optional<Pembeli> pembeliOptional = pembeliRepository.findById(transaksi.getPembeli().getId());
-            if (pembeliOptional.isPresent()){
+            if (pembeliOptional.isPresent()) {
                 Pembeli pembeli1 = pembeliOptional.get();
                 BigDecimal saldo = pembeli1.getSaldo();
                 saldo = saldo.subtract(biaya);
@@ -62,11 +62,11 @@ public class TransaksiService {
         return repository.save(transaksi);
     }
 
-    public Optional<Transaksi> findById (String id){
+    public Optional<Transaksi> findById(String id) {
         return repository.findById(id);
     }
 
-    public Page<Transaksi> findAll(Pageable page){
+    public Page<Transaksi> findAll(Pageable page) {
         return repository.findAll(page);
     }
 
