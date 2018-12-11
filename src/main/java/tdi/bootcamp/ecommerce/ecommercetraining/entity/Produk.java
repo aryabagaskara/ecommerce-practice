@@ -7,6 +7,8 @@ import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
 
 @Data
 @AllArgsConstructor
@@ -31,5 +33,13 @@ public class Produk {
     @ManyToOne
     @JoinColumn(name = "penjual_id")
     private Penjual penjual;
+
+    @OneToMany
+    @JoinTable(
+            name = "kategori_produk",
+            joinColumns = @JoinColumn(name = "produk_id", nullable = false),
+            inverseJoinColumns = @JoinColumn(name = "kategori_id", nullable = false)
+    )
+    private List<Kategori> daftarKategori = new ArrayList<>();
 
 }
