@@ -70,23 +70,21 @@ public class TransaksiService {
         return repository.findAll(page);
     }
 
-    public Iterable<Transaksi> list(){
+    public Iterable<Transaksi> list() {
         return repository.findAll();
     }
 
-    public List<Map<String, Object>> report() {
-        List<Map<String, Object>> result = new ArrayList<Map<String, Object>>();
-        for (Transaksi transaksi:repository.findAll()) {
-            Map<String, Object> item = new HashMap<String, Object>();
-            item.put("id", transaksi.getId());
-            item.put("nama", transaksi.getPembeli().getNama());
-            item.put("tanggalTransaksi", transaksi.getTanggalTransaksi());
-            result.add(item);
-        }
-        return result;
+    public List<Transaksi> findAll(){
+        return (List<Transaksi>) repository.findAll();
     }
 
+    public Page<Transaksi> findByPembeli_Id(String id, Pageable pageable) {
+        return (Page<Transaksi>) repository.findByPembeli_Id(id, pageable);
+    }
 
+    public Page<Transaksi> findByProduk_Id(String id, Pageable pageable) {
+        return (Page<Transaksi>) repository.findByProduk_Id(id,pageable);
+    }
 
 
 }

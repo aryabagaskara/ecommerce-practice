@@ -53,5 +53,15 @@ public class TransaksiApi {
         return transaksiService.findAll(page);
     }
 
+    @GetMapping("/pembeli/{id}")
+    public Page<Transaksi> findByPembeli(@PathVariable("id") String id, Pageable pageable) {
+        return (Page<Transaksi>) transaksiService.findByPembeli_Id(id, pageable);
+    }
+
+    @GetMapping("/produk/{id}")
+    public Page<Transaksi> findByProduk(@PathVariable("id")String id, Pageable page){
+        return (Page<Transaksi>) transaksiService.findByProduk_Id(id,page);
+    }
+
 
 }
