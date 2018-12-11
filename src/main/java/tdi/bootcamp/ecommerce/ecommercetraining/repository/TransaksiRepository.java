@@ -8,5 +8,6 @@ import tdi.bootcamp.ecommerce.ecommercetraining.entity.Transaksi;
 public interface TransaksiRepository extends PagingAndSortingRepository<Transaksi, String> {
 
     Page<Transaksi> findByPembeli_Id(String Id, Pageable pageable);
+
     Page<Transaksi> findByProduk_Id(String Id, Pageable pageable);
 }

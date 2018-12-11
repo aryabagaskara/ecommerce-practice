@@ -16,18 +16,18 @@ public class KategoriApi {
     private KategoriService service;
 
     @GetMapping("/list")
-    public Page<Kategori> list(Pageable page){
+    public Page<Kategori> list(Pageable page) {
         return service.paginate(page);
     }
 
     @PostMapping("/save")
-    public ResponseEntity<Kategori> save(@RequestBody Kategori kategori){
+    public ResponseEntity<Kategori> save(@RequestBody Kategori kategori) {
         kategori = service.save(kategori);
         return ResponseEntity.ok(kategori);
     }
 
     @DeleteMapping("/delete")
-    public ResponseEntity<?> delete(@RequestParam("id")String id){
+    public ResponseEntity<?> delete(@RequestParam("id") String id) {
         service.delete(id);
         return ResponseEntity.ok().build();
     }

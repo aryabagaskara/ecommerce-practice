@@ -19,20 +19,20 @@ public class KategoriService {
     private KategoriRepository repository;
 
     @Transactional
-    public Kategori save(Kategori kategori){
+    public Kategori save(Kategori kategori) {
         return repository.save(kategori);
     }
 
     @Transactional
-    public void delete(String id){
+    public void delete(String id) {
         repository.deleteById(id);
     }
 
-    public Optional<Kategori> findById(String id){
+    public Optional<Kategori> findById(String id) {
         return repository.findById(id);
     }
 
-    public Page<Kategori> paginate(Pageable page){
+    public Page<Kategori> paginate(Pageable page) {
         return repository.findAll(page);
     }
 }

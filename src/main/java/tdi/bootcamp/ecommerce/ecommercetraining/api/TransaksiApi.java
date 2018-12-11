@@ -59,8 +59,8 @@ public class TransaksiApi {
     }
 
     @GetMapping("/produk/{id}")
-    public Page<Transaksi> findByProduk(@PathVariable("id")String id, Pageable page){
-        return (Page<Transaksi>) transaksiService.findByProduk_Id(id,page);
+    public Page<Transaksi> findByProduk(@PathVariable("id") String id, Pageable page) {
+        return (Page<Transaksi>) transaksiService.findByProduk_Id(id, page);
     }
 
 

@@ -43,14 +43,6 @@ public class ReportController {
             final OutputStream outStream = response.getOutputStream();
             JasperExportManager.exportReportToPdfStream(jasperPrint, outStream);
         }
-
-//        JasperReport jasperReport = (JasperReport) JRLoader.loadObject(jasperStream);
-//        JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, item, new JREmptyDataSource());
-//        response.setContentType("application/x-pdf");
-//        response.setHeader("Content-disposition", "inline; filename=example.pdf");
-//
-//        final OutputStream outStream = response.getOutputStream();
-//        JasperExportManager.exportReportToPdfStream(jasperPrint, outStream);
     }
 
     @GetMapping("/transaksi/list")
@@ -58,7 +50,7 @@ public class ReportController {
         InputStream jasperStream = this.getClass().getResourceAsStream("/jasper/2ndJesper.jasper");
         Map<String, Object> item = new HashMap<>();
         List listTransaksi = service.findAll();
-        item.put("transaksi",listTransaksi);
+        item.put("transaksi", listTransaksi);
         JasperReport jasperReport = (JasperReport) JRLoader.loadObject(jasperStream);
         JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, item, new JRBeanCollectionDataSource(listTransaksi));
         response.setContentType("application/x-pdf");
