@@ -325,6 +325,6 @@
 		<band height="54" splitType="Stretch"/>
 	</pageFooter>
 	<summary>
-		<band height="42" splitType="Stretch"/>
+		<band height="37" splitType="Stretch"/>
 	</summary>
 </jasperReport>
