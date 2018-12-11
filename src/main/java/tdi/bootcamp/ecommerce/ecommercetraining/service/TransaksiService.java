@@ -17,7 +17,7 @@ import tdi.bootcamp.ecommerce.ecommercetraining.repository.TransaksiRepository;
 import java.math.BigDecimal;
 import java.sql.Date;
 import java.time.LocalDate;
-import java.util.Optional;
+import java.util.*;
 
 @Service
 @Transactional(readOnly = true)
@@ -69,6 +69,24 @@ public class TransaksiService {
     public Page<Transaksi> findAll(Pageable page) {
         return repository.findAll(page);
     }
+
+    public Iterable<Transaksi> list(){
+        return repository.findAll();
+    }
+
+    public List<Map<String, Object>> report() {
+        List<Map<String, Object>> result = new ArrayList<Map<String, Object>>();
+        for (Transaksi transaksi:repository.findAll()) {
+            Map<String, Object> item = new HashMap<String, Object>();
+            item.put("id", transaksi.getId());
+            item.put("nama", transaksi.getPembeli().getNama());
+            item.put("tanggalTransaksi", transaksi.getTanggalTransaksi());
+            result.add(item);
+        }
+        return result;
+    }
+
+
 
 
 }
